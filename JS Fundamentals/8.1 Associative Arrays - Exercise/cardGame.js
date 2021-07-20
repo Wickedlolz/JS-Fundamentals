@@ -1,44 +1,44 @@
 function cardGame(input) {
-    let symbolToPoints = { 'J': 11, 'Q': 12, 'K': 13, 'A': 14, 'S': 4, 'H': 3, 'D': 2, 'C': 1 };
     let players = {};
-    let results = {};
+    let cardsPower = { "J": 11, "Q": 12, "K": 13, "A": 14, "S": 4, "H": 3, "D": 2, "C": 1 };
 
-    for (let command of input) {
-        let tokens = command.split(': ');
+    for (let line of input) {
+        let tokens = line.split(': ');
         let playerName = tokens[0];
         let playerCards = tokens[1].split(', ');
 
-        if (!Object.keys(players).includes(playerName)) {
+        if (!players.hasOwnProperty(playerName)) {
             players[playerName] = [];
         }
 
-        players[playerName] = players[playerName].concat(playerCards);
-    }
-
-    for (let [playerName, playerCards] of Object.entries(players)) {
-        results[playerName] = 0;
-
-        for (let i = 0; i < playerCards.length; i++) {
-            let card = playerCards[i];
-            if (playerCards.indexOf(card) === i) {
-                let cardAsArray = card.split('');
-                let type = cardAsArray.pop();
-                let power = cardAsArray.join('');
-                let cardPoints = 0;
-
-                if (Object.keys(symbolToPoints).includes(power)) {
-                    cardPoints = symbolToPoints[power] * symbolToPoints[type];
-                } else {
-                    cardPoints = Number(power) * symbolToPoints[type];
-                }
-
-                results[playerName] += cardPoints;
+        for (let card of playerCards) {
+            if (!players[playerName].includes(card)) {
+                players[playerName].push(card);
             }
         }
     }
 
-    for (let [key, value] of Object.entries(results)) {
-        console.log(`${key}: ${value}`);
+    let playersPoints = {};
+
+    for (let [key, value] of Object.entries(players)) {
+        let points = 0;
+        for (let card of value) {
+            let tokens = card.split('');
+            let cardValue = tokens.slice(0, tokens.length - 1).join('');
+            let cardPower = tokens.slice(tokens.length - 1);
+
+            if (cardsPower.hasOwnProperty(cardValue)) {
+                points += cardsPower[cardValue] * cardsPower[cardPower];
+            } else {
+                points += Number(cardValue) * cardsPower[cardPower];
+            }
+        }
+
+        playersPoints[key] = points;
+    }
+
+    for (let key in playersPoints) {
+        console.log(`${key}: ${playersPoints[key]}`);
     }
 }
 
