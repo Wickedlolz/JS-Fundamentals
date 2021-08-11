@@ -24,4 +24,4 @@ SoftUni courses - homework
   - [x] Associative Arrays
   - [x] Text Processing
   - [x] Regular Expressions
-  - [ ] Basic Web Project          
+  - [x] Basic Web Project          
