@@ -15,7 +15,16 @@ function getContacts() {
     return db;
 }
 
+function deleteContact(id) {
+    let dbAsString = fs.readFileSync('./database.json', 'utf-8');
+    let db = JSON.parse(dbAsString);
+
+    let result = db.filter(x => x.id != id);
+    fs.writeFileSync('./database.json', JSON.stringify(result));
+}
+
 module.exports = {
     addContact,
-    getContacts
+    getContacts,
+    deleteContact
 }
