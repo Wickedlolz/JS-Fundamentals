@@ -1,17 +1,18 @@
-/* TODO: 
-    create phonebook array
-    add methods for adding in the phonebook and getting it
-    export the methods
-*/
-
-let phonebook = [];
+const fs = require('fs');
 
 function addContact(contact) {
-    phonebook.push(contact);
+    let dbAsString = fs.readFileSync('./database.json', 'utf-8');
+    let db = JSON.parse(dbAsString);
+    db.push(contact);
+
+    fs.writeFileSync('./data.json', JSON.stringify(db));
 }
 
 function getContacts() {
-    return phonebook;
+    let dbAsString = fs.readFileSync('./database.json', 'utf-8');
+    let db = JSON.parse(dbAsString);
+
+    return db;
 }
 
 module.exports = {
