@@ -1,9 +1,9 @@
 // TODO: Create Contact model and export it
 
 class Contact {
-    constructor(name, phone) {
+    constructor(name, number) {
         this.name = name;
-        this.phone = phone;
+        this.number = number;
     }
 }
 
