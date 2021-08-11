@@ -5,7 +5,7 @@ function addContact(contact) {
     let db = JSON.parse(dbAsString);
     db.push(contact);
 
-    fs.writeFileSync('./data.json', JSON.stringify(db));
+    fs.writeFileSync('./database.json', JSON.stringify(db));
 }
 
 function getContacts() {
