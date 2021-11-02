@@ -1,7 +1,7 @@
 # SoftUni
 SoftUni JavaScript Fundamentals - Homework
 
-## Completed Courses
+## Successully completed courses
 - [x] **Programming Basics with JavaScript**
 
 [certificate](https://softuni.bg/certificates/certificates/converttoimage/102082?code=43652c6a)
