@@ -1,5 +1,5 @@
 # SoftUni
-SoftUni courses - homework
+SoftUni JavaScript Fundamentals - Homework
 
 ## Completed Courses
 - [x] **Programming Basics with JavaScript**
